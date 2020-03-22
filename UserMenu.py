@@ -1,6 +1,9 @@
+from OrderProcessor import OrderProcessor
+
+
 class UserMenu:
     def __init__(self):
-        pass
+        self.order_processor = OrderProcessor()
 
     def main_menu(self):
         print('1. Process Web Orders')
@@ -9,7 +12,8 @@ class UserMenu:
         user_input = input('Choose 1-3: ')
 
         if user_input == '1':
-            pass
+            file = input('Please enter name of excel file: ')
+            self.order_processor.create_order(file)
         elif user_input == '2':
             pass
         elif user_input == '3':

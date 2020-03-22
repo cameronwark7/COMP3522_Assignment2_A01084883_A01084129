@@ -10,8 +10,7 @@ class OrderProcessor:
     def __init__(self):
         pass
 
-    def createOrder(self):
-        excel_file = 'orders.xlsx'
+    def create_order(self, excel_file):
         spreadsheet = pd.read_excel(excel_file)
         orders = []
         total_rows = len(spreadsheet.index)
