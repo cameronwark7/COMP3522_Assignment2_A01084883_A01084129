@@ -11,8 +11,11 @@ class Store:
                 # self.inventory.append(factory.create_item('missing item'))
                 # create 100 of missing item and put in self.inventory list
                 print('zero occurrences')
+                for y in range(100):
+                    self.inventory.append(self.orders[x].factory_ref.create_item())
             else:
-                pass # remove item from inventory list
+                print('occurrence detected')
+                self.inventory.remove(self.orders[x])  # remove item from inventory list
 
 
 
