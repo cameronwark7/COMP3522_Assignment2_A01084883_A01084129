@@ -37,7 +37,7 @@ class OrderProcessor:
                     product_details[str(col_name)] = str(spreadsheet.iloc[x, y])
 
             factory_ref = self.factory_mapping.determine_factory(holiday, item_type, product_details)
-            order = Order(order_num, product_id, item_type, item_name, product_details, factory_ref)
+            order = Order(order_num, product_id, item_type, item_name, product_details, factory_ref, product_details.get('quantity', None))
             orders.append(order)
 
         return orders

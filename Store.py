@@ -10,9 +10,13 @@ class Store:
 
     def process_orders(self):
         for x in range(len(self.orders)):
-            occurrences = self.inventory.count(self.orders[x])
+            product_id = self.orders[x].product_id
+            count = 0
+            for y in self.inventory:
+                if y.product_id == product_id:
+                    count = (count + 1)
 
-            if occurrences == 0:
+            if count == 0:
                 # self.inventory.append(factory.create_item('missing item'))
                 # create 100 of missing item and put in self.inventory list
                 print('zero occurrences')
@@ -22,7 +26,14 @@ class Store:
                 self.define_buy_transaction('100', self.orders[x])
             else:
                 print('occurrence detected')
-                self.inventory.remove(self.orders[x])  # remove item from inventory list
+                num_bought = self.orders[x].quantity
+                for z in self.inventory:
+                    if num_bought == 0:
+                        break
+                    if z.product_id == product_id:
+                        self.inventory.remove(self.inventory.index(z))
+                        num_bought = (num_bought - 1)
+
 
     def define_buy_transaction(self, qty, order_obj):
         order_num = str(len(self.transactions) + 1)
