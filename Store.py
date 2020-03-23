@@ -19,7 +19,6 @@ class Store:
             if count == 0:
                 # self.inventory.append(factory.create_item('missing item'))
                 # create 100 of missing item and put in self.inventory list
-                print('zero occurrences')
                 for y in range(100):
                     self.inventory.append(self.orders[x].factory_ref.create_item())
                 # record the transaction
@@ -31,7 +30,7 @@ class Store:
                     if num_bought == 0:
                         break
                     if z.product_id == product_id:
-                        self.inventory.remove(self.inventory.index(z))
+                        del self.inventory[self.inventory.index(z)]
                         num_bought = (num_bought - 1)
 
 

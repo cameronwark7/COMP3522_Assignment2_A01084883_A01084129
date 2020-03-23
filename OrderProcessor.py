@@ -21,6 +21,7 @@ class OrderProcessor:
             item_type = spreadsheet.loc[x, 'item']
             item_name = spreadsheet.loc[x, 'name']
             holiday = spreadsheet.loc[x, 'holiday']
+            quantity = spreadsheet.loc[x, 'quantity']
             skip_values = [order_num, product_id, item_type, item_name, holiday]
             self.factory_mapping.order_num = order_num
             self.factory_mapping.product_id = product_id
@@ -37,7 +38,7 @@ class OrderProcessor:
                     product_details[str(col_name)] = str(spreadsheet.iloc[x, y])
 
             factory_ref = self.factory_mapping.determine_factory(holiday, item_type, product_details)
-            order = Order(order_num, product_id, item_type, item_name, product_details, factory_ref, product_details.get('quantity', None))
+            order = Order(order_num, product_id, item_type, item_name, product_details, factory_ref, quantity)
             orders.append(order)
 
         return orders
