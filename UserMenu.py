@@ -22,7 +22,9 @@ class UserMenu:
             print('Orders processed.')
             self.main_menu()
         elif user_input == '2':
-            pass
+            product_id = input('Please enter the product ID of item: ')
+            self.store.check_stock(product_id)
+            self.main_menu()
         elif user_input == '3':
             self.store.create_transaction_report()
         else:
