@@ -65,11 +65,14 @@ class Store:
 
     def create_transaction_report(self):
         x = datetime.datetime.now()
+        y = datetime.datetime.now()
+        top_date = y.strftime('%d-%m-%Y %H:%M')
         date = x.strftime('%d%m%Y_%H%M')
         date1 = date[:6]
         date2 = date[8:]
         final_date = date1 + date2
         file = open(final_date + '.txt', 'w')
+        file.write('HOLIDAY STORE - DAILY TRANSACTION REPORT (DRT)\n' + str(top_date) + '\n\n')
         for x in self.transactions:
             file.write(x + '\n')
         file.close()
