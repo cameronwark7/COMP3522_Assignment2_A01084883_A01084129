@@ -11,6 +11,10 @@ class Store:
                 # self.inventory.append(factory.create_item('missing item'))
                 # create 100 of missing item and put in self.inventory list
                 print('zero occurrences')
+            else:
+                pass # remove item from inventory list
+
+
 
     def create_transaction_report(self):
         pass

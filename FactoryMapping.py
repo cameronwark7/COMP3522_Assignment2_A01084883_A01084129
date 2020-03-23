@@ -28,6 +28,9 @@ class InventoryFactory(abc.ABC):
     def create_candy(self) -> Candy:
         pass
 
+class FactoryMapping:
+    def determine_factory(self, holiday, item_type):
+        pass
 
 class HalloweenFactory(InventoryFactory):
 

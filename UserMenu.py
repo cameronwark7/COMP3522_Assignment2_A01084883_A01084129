@@ -24,7 +24,7 @@ class UserMenu:
         elif user_input == '2':
             pass
         elif user_input == '3':
-            pass
+            self.store.create_transaction_report()
         else:
             print('INVALID INPUT')
             print('----------------------')

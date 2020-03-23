@@ -1,14 +1,11 @@
-import math
-
 import pandas as pd
-from pandas import isnull
-
 from Order import Order
+from FactoryMapping import FactoryMapping
 
 
 class OrderProcessor:
     def __init__(self):
-        pass
+        self.factory_mapping = FactoryMapping()
 
     def create_order(self, excel_file):
         spreadsheet = pd.read_excel(excel_file)
@@ -21,13 +18,14 @@ class OrderProcessor:
             product_id = spreadsheet.loc[x, 'product_id']
             item_type = spreadsheet.loc[x, 'item']
             item_name = spreadsheet.loc[x, 'name']
+            holiday = spreadsheet.loc[x, 'holiday']
             product_details = {}
 
             # for y in range(total_columns):
             #     if isnull(spreadsheet.iloc[x, y]) == False:
             #         print(spreadsheet.iloc[x, y])
 
-            factory_ref = None
+            factory_ref = self.factory_mapping.determine_factory(holiday, item_type)
             order = Order(order_num, product_id, item_type, item_name, product_details, factory_ref)
             orders.append(order)
 
